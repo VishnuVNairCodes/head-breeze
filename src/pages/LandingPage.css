@@ -15,7 +15,7 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto 1fr auto;
   align-items: center;
-  row-gap: 12.8rem;
+  row-gap: 9.6rem;
 }
 
 .color-primary {
