@@ -1,5 +1,17 @@
 import { Routes, Route } from "react-router-dom";
-import { LandingPage, Home, Labels, Archive, Trash, Profile } from "./pages";
+import {
+  LandingPage,
+  Home,
+  Labels,
+  Archive,
+  Trash,
+  Profile,
+  Login,
+  Signup,
+} from "./pages";
+
+import { MockAPI } from "./pages/MockAPI";
+import { RequiresAuth } from "./RequiresAuth";
 
 import "./App.css";
 
@@ -8,11 +20,49 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/labels" element={<Labels />} />
-        <Route path="/archive" element={<Archive />} />
-        <Route path="/trash" element={<Trash />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/home"
+          element={
+            <RequiresAuth>
+              <Home />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/labels"
+          element={
+            <RequiresAuth>
+              <Labels />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/archive"
+          element={
+            <RequiresAuth>
+              <Archive />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/trash"
+          element={
+            <RequiresAuth>
+              <Trash />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <RequiresAuth>
+              <Profile />
+            </RequiresAuth>
+          }
+        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/mockman" element={<MockAPI />} />
       </Routes>
     </div>
   );
