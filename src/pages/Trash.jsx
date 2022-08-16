@@ -1,10 +1,11 @@
-import { NavBar } from "../components/NavBar";
+import { Header, Main, NavBar } from "../components";
 
 const Trash = () => (
-  <>
-    <h1>Trash</h1>
+  <div className="app-layout">
+    <Header />
     <NavBar />
-  </>
+    <Main />
+  </div>
 );
 
 export { Trash };

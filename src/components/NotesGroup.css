@@ -1,0 +1,12 @@
+.notes-group-heading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+}
+
+.notes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}

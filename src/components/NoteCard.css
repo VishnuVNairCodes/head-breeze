@@ -1,0 +1,53 @@
+.note-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.2rem;
+  gap: 2.4rem;
+  border: 1px solid var(--component-border);
+  border-radius: 4px;
+  background-color: var(--white);
+}
+
+.note-header,
+.note-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.note-header-title {
+  font-size: 1.8rem;
+}
+
+.note-footer-date {
+  color: var(--component);
+}
+
+.note-labels {
+  display: flex;
+  gap: 8px;
+}
+
+.note-labels-item {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 1rem;
+  background-color: var(--component-border);
+}
+
+.note-footer-btn-container {
+  display: flex;
+  gap: 2.4rem;
+}
+
+.note-card-btn {
+  background-color: var(--transparent);
+  font-size: 2rem;
+  color: var(--component);
+}
+
+.note-card-btn:hover {
+  color: var(--component-hover);
+}

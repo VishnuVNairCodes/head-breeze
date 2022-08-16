@@ -1,9 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+
 :root {
   --primary: #20c997;
+  --primary-hover: #1aa179;
   --primary-shade: #03140f;
   --font-default: #000;
+  --white: #fff;
+  --main-background: #f8f9fa;
+  --border: #f1f3f5;
+  --nav-hover: #e9ecef;
+  --component: #868e96;
+  --component-hover: #495057;
+  --component-border: #ced4da;
 }
 
 *,
@@ -20,9 +30,41 @@ html {
 
 body {
   font-family: "Inter", sans-serif;
+  font-size: 1.6rem;
   line-height: 1;
   font-weight: 400;
   color: var(--font-default);
+}
+
+html,
+body,
+#root,
+.App {
+  height: 100%;
+}
+
+.app-layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 6.4rem calc(100vh - 6.4rem);
+}
+
+.color-primary {
+  color: var(--primary);
+}
+
+.color-primary-shade {
+  color: var(--primary-shade);
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+
+  transition: all 0.3s;
 }
 
 /* .heading-primary,
