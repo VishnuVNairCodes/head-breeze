@@ -1,0 +1,37 @@
+.search-filter-sort-container {
+  flex-basis: 35%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 4px 1.2rem;
+  border-radius: 4px;
+  border: 1px solid var(--component-border);
+}
+
+.search-filter-sort-container .bi {
+  color: var(--component);
+  font-size: 2rem;
+  transition: all 0.3s;
+}
+
+.search-filter-sort-container .bi:hover {
+  color: var(--component-hover);
+}
+
+.search-input {
+  flex-grow: 1;
+  font-size: 1.6rem;
+  color: var(--component);
+  border: none;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: var(--component);
+}
+
+.search-filter-sort-container .btn {
+  background-color: var(--white);
+}

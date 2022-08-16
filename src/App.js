@@ -8,9 +8,9 @@ import {
   Profile,
   Login,
   Signup,
+  MockAPI,
 } from "./pages";
 
-import { MockAPI } from "./pages/MockAPI";
 import { RequiresAuth } from "./RequiresAuth";
 
 import "./App.css";

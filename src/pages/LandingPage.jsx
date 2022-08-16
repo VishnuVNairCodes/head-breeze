@@ -22,8 +22,8 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="hero-action">
-            <button className="hero-btn-primary">Join Now</button>
-            <button className="hero-btn-secondary">
+            <button className="btn hero-btn-primary">Join Now</button>
+            <button className="btn hero-btn-secondary">
               Already have an account?
             </button>
           </div>

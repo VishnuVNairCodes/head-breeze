@@ -1,10 +1,11 @@
-import { NavBar } from "../components/NavBar";
+import { Header, NavBar } from "../components";
 
 const Profile = () => (
-  <>
-    <h1>Profile</h1>
+  <div className="app-layout">
+    <Header />
     <NavBar />
-  </>
+    <h2>Profile</h2>
+  </div>
 );
 
 export { Profile };
