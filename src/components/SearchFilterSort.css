@@ -28,10 +28,6 @@
   outline: none;
 }
 
-.search-input::placeholder {
-  color: var(--component);
-}
-
 .search-filter-sort-container .btn {
   background-color: var(--white);
 }
