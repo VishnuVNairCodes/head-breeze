@@ -14,7 +14,7 @@ const Main = ({ pageName }) => {
         {!loader && pageName === "home" && (
           <section className="notes-group-container">
             <NotesGroup />
-            <NotesGroup />
+            {/* <NotesGroup /> */}
           </section>
         )}
       </div>
