@@ -22,7 +22,9 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="hero-action">
-            <button className="btn hero-btn-primary">Join Now</button>
+            <button className="btn btn-primary hero-btn-primary">
+              Join Now
+            </button>
             <button className="btn hero-btn-secondary">
               Already have an account?
             </button>

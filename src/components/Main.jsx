@@ -1,14 +1,22 @@
-import "./Main.css";
 import { NotesGroup } from "../components";
+import { useNotes } from "../contexts/notes-context";
 
-const Main = () => {
+import "./Main.css";
+
+const Main = ({ pageName }) => {
+  const {
+    notesState: { loader },
+  } = useNotes();
   return (
     <main className="main">
       <div className="main-inner-container">
-        <section className="notes-group-container">
-          <NotesGroup />
-          <NotesGroup />
-        </section>
+        {loader && <p>Loading notes...</p>}
+        {!loader && pageName === "home" && (
+          <section className="notes-group-container">
+            <NotesGroup />
+            <NotesGroup />
+          </section>
+        )}
       </div>
     </main>
   );
