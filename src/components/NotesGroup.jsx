@@ -15,7 +15,7 @@ const NotesGroup = ({ pageName }) => {
     case "LABELS":
       currentPageNotes = [];
       break;
-    case "ARCHIVE":
+    case "ARCHIVES":
       currentPageNotes = notesArchived;
       break;
     case "TRASH":
