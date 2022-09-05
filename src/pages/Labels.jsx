@@ -4,7 +4,7 @@ const Labels = () => (
   <div className="app-layout">
     <Header />
     <NavBar />
-    <Main />
+    <Main pageName="LABELS" />
   </div>
 );
 

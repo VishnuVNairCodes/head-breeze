@@ -4,7 +4,7 @@ const Trash = () => (
   <div className="app-layout">
     <Header />
     <NavBar />
-    <Main />
+    <Main pageName="TRASH" />
   </div>
 );
 

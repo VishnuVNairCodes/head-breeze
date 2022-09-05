@@ -2,10 +2,28 @@ import { NoteCard } from "../components";
 import { useNotes } from "../contexts/notes-context";
 import "./NotesGroup.css";
 
-const NotesGroup = () => {
+const NotesGroup = ({ pageName }) => {
   const {
-    notesState: { notes },
+    notesState: { notes, notesArchived, notesTrashed },
   } = useNotes();
+
+  let currentPageNotes;
+  switch (pageName) {
+    case "HOME":
+      currentPageNotes = notes;
+      break;
+    case "LABELS":
+      currentPageNotes = [];
+      break;
+    case "ARCHIVE":
+      currentPageNotes = notesArchived;
+      break;
+    case "TRASH":
+      currentPageNotes = notesTrashed;
+      break;
+    default:
+      throw new Error("Invalid page name");
+  }
 
   return (
     <section className="notes-group">
@@ -13,8 +31,8 @@ const NotesGroup = () => {
       <section className="notes-container">
         {/* <NoteCard />
         <NoteCard /> */}
-        {notes.map((note) => (
-          <NoteCard key={note._id} note={note} />
+        {currentPageNotes.map((currentPageNote) => (
+          <NoteCard key={currentPageNote._id} note={currentPageNote} />
         ))}
       </section>
     </section>

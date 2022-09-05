@@ -5,7 +5,7 @@ const Home = () => {
     <div className="app-layout">
       <Header />
       <NavBar />
-      <Main pageName="home" />
+      <Main pageName="HOME" />
     </div>
   );
 };

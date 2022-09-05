@@ -11,9 +11,9 @@ const Main = ({ pageName }) => {
     <main className="main">
       <div className="main-inner-container">
         {loader && <p>Loading notes...</p>}
-        {!loader && pageName === "home" && (
+        {!loader && (
           <section className="notes-group-container">
-            <NotesGroup />
+            <NotesGroup pageName={pageName} />
             {/* <NotesGroup /> */}
           </section>
         )}

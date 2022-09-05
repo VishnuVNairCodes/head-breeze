@@ -4,7 +4,7 @@ const Archive = () => (
   <div className="app-layout">
     <Header />
     <NavBar />
-    <Main />
+    <Main pageName="ARCHIVE" />
   </div>
 );
 
