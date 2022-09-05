@@ -1,5 +1,6 @@
 import { useAuth } from "../contexts/auth-context";
 import { useNotes } from "../contexts/notes-context";
+import { addToArchivesService } from "../services/archive-services/addToArchivesService";
 import { deleteNoteService } from "../services/note-services";
 import "./NoteCard.css";
 
@@ -33,6 +34,25 @@ const NoteCard = ({ note }) => {
     }
   };
 
+  const addToArchiveClickHandler = async () => {
+    try {
+      const response = await addToArchivesService(note, token);
+      const {
+        status,
+        data: { notes, archives },
+      } = response;
+      console.log(status, notes, archives);
+      if (status === 201) {
+        notesDispatch({
+          type: "ADD_NOTE_TO_ARCHIVES",
+          payload: { notes, archives },
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <article className="note-card">
       <section className="note-header">
@@ -61,7 +81,10 @@ const NoteCard = ({ note }) => {
           <button className="btn note-card-btn">
             <i className="bi bi-tag"></i>
           </button>
-          <button className="btn note-card-btn">
+          <button
+            className="btn note-card-btn"
+            onClick={addToArchiveClickHandler}
+          >
             <i className="bi bi-save"></i>
           </button>
           <button className="btn note-card-btn" onClick={deleteClickHandler}>
