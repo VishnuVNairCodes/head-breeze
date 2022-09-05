@@ -42,7 +42,7 @@ const NavBar = () => {
                 className="nav-list-item-link"
                 to="/archive"
               >
-                <i className="bi bi-archive"></i>Archive
+                <i className="bi bi-archive"></i>Archives
               </NavLink>
             </li>
             <li className="nav-list-item">

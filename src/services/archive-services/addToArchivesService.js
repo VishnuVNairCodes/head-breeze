@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const addToArchivesNoteService = (note, token) =>
+const addToArchivesService = (note, token) =>
   axios.post(
     `/api/notes/archives/${note._id}`,
     {
@@ -13,4 +13,4 @@ const addToArchivesNoteService = (note, token) =>
     }
   );
 
-export { addToArchivesNoteService };
+export { addToArchivesService };
