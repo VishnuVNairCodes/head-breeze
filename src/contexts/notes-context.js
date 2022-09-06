@@ -78,6 +78,12 @@ const NotesProvider = ({ children }) => {
           notes: [...notesAction.payload.notes],
           notesArchived: [...notesAction.payload.archives],
         };
+      case "ADD_NOTE_TO_TRASH":
+        return {
+          ...notesState,
+          notes: [...notesAction.payload.notes],
+          notesTrashed: [...notesAction.payload.trash],
+        };
       default:
         throw new Error("Invalid action type");
     }

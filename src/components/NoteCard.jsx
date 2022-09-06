@@ -2,6 +2,7 @@ import { useAuth } from "../contexts/auth-context";
 import { useNotes } from "../contexts/notes-context";
 import { addToArchivesService } from "../services/archive-services/addToArchivesService";
 import { deleteNoteService } from "../services/note-services";
+import { addToTrashService } from "../services/trash-services/addToTrashService";
 import "./NoteCard.css";
 
 const NoteCard = ({ note }) => {
@@ -41,11 +42,28 @@ const NoteCard = ({ note }) => {
         status,
         data: { notes, archives },
       } = response;
-      console.log(status, notes, archives);
       if (status === 201) {
         notesDispatch({
           type: "ADD_NOTE_TO_ARCHIVES",
           payload: { notes, archives },
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const addToTrashClickHandler = async () => {
+    try {
+      const response = await addToTrashService(note, token);
+      const {
+        status,
+        data: { notes, trash },
+      } = response;
+      if (status === 201) {
+        notesDispatch({
+          type: "ADD_NOTE_TO_TRASH",
+          payload: { notes, trash },
         });
       }
     } catch (error) {
@@ -87,7 +105,10 @@ const NoteCard = ({ note }) => {
           >
             <i className="bi bi-save"></i>
           </button>
-          <button className="btn note-card-btn" onClick={deleteClickHandler}>
+          <button
+            className="btn note-card-btn"
+            onClick={addToTrashClickHandler}
+          >
             <i className="bi bi-trash3"></i>
           </button>
         </div>
