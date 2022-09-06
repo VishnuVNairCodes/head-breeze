@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
-import { useAuth } from "../contexts/auth-context";
-import { useNotes } from "../contexts/notes-context";
-import { ModalNoteInput } from "./ModalNoteInput";
+import { useAuth } from "../../contexts/auth-context";
+import { useNotes } from "../../contexts/notes-context";
+import { ModalNoteInput } from "../../components";
 
 import "./NavBar.css";
 

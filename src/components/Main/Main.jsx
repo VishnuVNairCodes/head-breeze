@@ -1,5 +1,5 @@
-import { NotesGroup } from "../components";
-import { useNotes } from "../contexts/notes-context";
+import { NotesGroup } from "../../components";
+import { useNotes } from "../../contexts/notes-context";
 
 import "./Main.css";
 

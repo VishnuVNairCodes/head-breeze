@@ -1,8 +1,8 @@
-import { useAuth } from "../contexts/auth-context";
-import { useNotes } from "../contexts/notes-context";
-import { addToArchivesService } from "../services/archive-services/addToArchivesService";
-import { deleteNoteService } from "../services/note-services";
-import { addToTrashService } from "../services/trash-services/addToTrashService";
+import { useAuth } from "../../contexts/auth-context";
+import { useNotes } from "../../contexts/notes-context";
+import { addToArchivesService } from "../../services/archive-services/addToArchivesService";
+import { deleteNoteService } from "../../services/note-services";
+import { addToTrashService } from "../../services/trash-services/addToTrashService";
 import "./NoteCard.css";
 
 const NoteCard = ({ note, pageName }) => {

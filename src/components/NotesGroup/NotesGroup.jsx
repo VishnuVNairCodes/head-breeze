@@ -1,5 +1,5 @@
-import { NoteCard } from "../components";
-import { useNotes } from "../contexts/notes-context";
+import { NoteCard } from "../../components";
+import { useNotes } from "../../contexts/notes-context";
 import "./NotesGroup.css";
 
 const NotesGroup = ({ pageName }) => {
