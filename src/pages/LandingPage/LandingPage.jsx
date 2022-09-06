@@ -33,7 +33,7 @@ const LandingPage = () => {
           <div className="hero-img-container">
             <img
               className="hero-img"
-              src={require("./note-taking.svg").default}
+              src={require("../../assets/images/note-taking.svg").default}
               alt="note taking"
             />
           </div>

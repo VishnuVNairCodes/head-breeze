@@ -1,4 +1,4 @@
-import { Header, Main, NavBar } from "../components";
+import { Header, Main, NavBar } from "../../components";
 
 const Trash = () => (
   <div className="app-layout">
