@@ -5,7 +5,7 @@ import { deleteNoteService } from "../services/note-services";
 import { addToTrashService } from "../services/trash-services/addToTrashService";
 import "./NoteCard.css";
 
-const NoteCard = ({ note }) => {
+const NoteCard = ({ note, pageName }) => {
   const {
     currentAuthInfo: { token },
   } = useAuth();
@@ -90,27 +90,47 @@ const NoteCard = ({ note }) => {
       <section className="note-footer">
         <p className="note-footer-date">Created on 26/10/2021</p>
         <div className="note-footer-btn-container">
-          <button className="btn note-card-btn" onClick={editClickHandler}>
-            <i className="bi bi-pencil"></i>
-          </button>
-          <button className="btn note-card-btn">
-            <i className="bi bi-palette"></i>
-          </button>
-          <button className="btn note-card-btn">
-            <i className="bi bi-tag"></i>
-          </button>
-          <button
-            className="btn note-card-btn"
-            onClick={addToArchiveClickHandler}
-          >
-            <i className="bi bi-save"></i>
-          </button>
-          <button
-            className="btn note-card-btn"
-            onClick={addToTrashClickHandler}
-          >
-            <i className="bi bi-trash3"></i>
-          </button>
+          {pageName !== "TRASH" && (
+            <>
+              <button className="btn note-card-btn" onClick={editClickHandler}>
+                <i className="bi bi-pencil"></i>
+              </button>
+              <button className="btn note-card-btn">
+                <i className="bi bi-palette"></i>
+              </button>
+              <button className="btn note-card-btn">
+                <i className="bi bi-tag"></i>
+              </button>
+              {pageName !== "ARCHIVES" ? (
+                <button
+                  className="btn note-card-btn"
+                  onClick={addToArchiveClickHandler}
+                >
+                  <i className="bi bi-arrow-down-square"></i>
+                </button>
+              ) : (
+                <button className="btn note-card-btn">
+                  <i className="bi bi-arrow-up-square"></i>
+                </button>
+              )}
+              <button
+                className="btn note-card-btn"
+                onClick={addToTrashClickHandler}
+              >
+                <i className="bi bi-trash3"></i>
+              </button>
+            </>
+          )}
+          {pageName === "TRASH" && (
+            <>
+              <button className="btn note-card-btn">
+                <i className="bi bi-back"></i>
+              </button>
+              <button className="btn note-card-btn">
+                <i className="bi bi-trash3-fill"></i>
+              </button>
+            </>
+          )}
         </div>
       </section>
     </article>

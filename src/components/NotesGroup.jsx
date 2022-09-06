@@ -32,7 +32,11 @@ const NotesGroup = ({ pageName }) => {
         {/* <NoteCard />
         <NoteCard /> */}
         {currentPageNotes.map((currentPageNote) => (
-          <NoteCard key={currentPageNote._id} note={currentPageNote} />
+          <NoteCard
+            key={currentPageNote._id}
+            note={currentPageNote}
+            pageName={pageName}
+          />
         ))}
       </section>
     </section>
