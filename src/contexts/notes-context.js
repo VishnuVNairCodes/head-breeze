@@ -84,7 +84,18 @@ const NotesProvider = ({ children }) => {
           notes: [...notesAction.payload.notes],
           notesArchived: [...notesAction.payload.archives],
         };
+      case "DELETE_NOTE_FROM_ARCHIVES":
+        return {
+          ...notesState,
+          notesArchived: [...notesAction.payload],
+        };
       case "ADD_NOTE_TO_TRASH":
+        return {
+          ...notesState,
+          notes: [...notesAction.payload.notes],
+          notesTrashed: [...notesAction.payload.trash],
+        };
+      case "RESTORE_FROM_TRASH":
         return {
           ...notesState,
           notes: [...notesAction.payload.notes],

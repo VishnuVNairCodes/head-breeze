@@ -6,10 +6,12 @@ const NoteCard = ({ note, pageName }) => {
 
   const {
     editClickHandler,
-    deleteClickHandler,
+    noteDeleteClickHandler,
     addToArchivesClickHandler,
     restoreFromArchivesClickHandler,
+    archivedNoteDeleteClickHandler,
     addToTrashClickHandler,
+    restoreFromTrashClickHandler,
   } = useNoteCardHandlers(note);
 
   return (
@@ -66,19 +68,22 @@ const NoteCard = ({ note, pageName }) => {
               </button>
               <button
                 className="btn note-card-btn"
-                onClick={addToTrashClickHandler}
+                onClick={archivedNoteDeleteClickHandler}
               >
-                <i className="bi bi-trash3"></i>
+                <i className="bi bi-file-x"></i>
               </button>
             </>
           )}
           {pageName === "TRASH" && (
             <>
-              <button className="btn note-card-btn">
+              <button
+                className="btn note-card-btn"
+                onClick={restoreFromTrashClickHandler}
+              >
                 <i className="bi bi-back"></i>
               </button>
               <button className="btn note-card-btn">
-                <i className="bi bi-trash3-fill"></i>
+                <i className="bi bi-file-x"></i>
               </button>
             </>
           )}

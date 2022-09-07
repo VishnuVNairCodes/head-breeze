@@ -2,10 +2,14 @@ import { useAuth } from "../contexts/auth-context";
 import { useNotes } from "../contexts/notes-context";
 import {
   addToArchivesService,
+  deleteFromArchivesService,
   restoreFromArchivesService,
 } from "../services/archive-services";
 import { deleteNoteService } from "../services/note-services";
-import { addToTrashService } from "../services/trash-services";
+import {
+  addToTrashService,
+  restoreFromTrashService,
+} from "../services/trash-services";
 
 const useNoteCardHandlers = (note) => {
   const {
@@ -18,7 +22,7 @@ const useNoteCardHandlers = (note) => {
     notesDispatch({ type: "OPEN_MODAL_NOTE_INPUT_TO_EDIT", payload: note });
   };
 
-  const deleteClickHandler = async () => {
+  const noteDeleteClickHandler = async () => {
     try {
       const response = await deleteNoteService(note, token);
       console.log(response, "deleted");
@@ -73,6 +77,21 @@ const useNoteCardHandlers = (note) => {
     }
   };
 
+  const archivedNoteDeleteClickHandler = async () => {
+    try {
+      const response = await deleteFromArchivesService(note, token);
+      const {
+        status,
+        data: { archives },
+      } = response;
+      if (status === 200) {
+        notesDispatch({ type: "DELETE_NOTE_FROM_ARCHIVES", payload: archives });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const addToTrashClickHandler = async () => {
     try {
       const response = await addToTrashService(note, token);
@@ -91,12 +110,26 @@ const useNoteCardHandlers = (note) => {
     }
   };
 
+  const restoreFromTrashClickHandler = async () => {
+    const response = await restoreFromTrashService(note, token);
+    console.log(response);
+    const {
+      status,
+      data: { notes, trash },
+    } = response;
+    if (status === 200) {
+      notesDispatch({ type: "RESTORE_FROM_TRASH", payload: { notes, trash } });
+    }
+  };
+
   return {
     editClickHandler,
-    deleteClickHandler,
+    noteDeleteClickHandler,
     addToArchivesClickHandler,
     restoreFromArchivesClickHandler,
+    archivedNoteDeleteClickHandler,
     addToTrashClickHandler,
+    restoreFromTrashClickHandler,
   };
 };
 
