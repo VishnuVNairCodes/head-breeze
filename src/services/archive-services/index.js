@@ -1,3 +1,3 @@
 export { getArchivesService } from "./getArchivesService";
-export { addToArchiveService } from "./addToArchivesService";
+export { addToArchivesService } from "./addToArchivesService";
 export { restoreFromArchivesService } from "./restoreFromArchivesService";

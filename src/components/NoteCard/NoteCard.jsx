@@ -8,6 +8,7 @@ const NoteCard = ({ note, pageName }) => {
     editClickHandler,
     deleteClickHandler,
     addToArchivesClickHandler,
+    restoreFromArchivesClickHandler,
     addToTrashClickHandler,
   } = useNoteCardHandlers(note);
 
@@ -49,7 +50,10 @@ const NoteCard = ({ note, pageName }) => {
                   <i className="bi bi-arrow-down-square"></i>
                 </button>
               ) : (
-                <button className="btn note-card-btn">
+                <button
+                  className="btn note-card-btn"
+                  onClick={restoreFromArchivesClickHandler}
+                >
                   <i className="bi bi-arrow-up-square"></i>
                 </button>
               )}

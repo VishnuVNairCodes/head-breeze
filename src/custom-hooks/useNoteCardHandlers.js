@@ -1,8 +1,11 @@
-import { useAuth } from "../../contexts/auth-context";
-import { useNotes } from "../../contexts/notes-context";
-import { addToArchivesService } from "../../services/archive-services/addToArchivesService";
-import { deleteNoteService } from "../../services/note-services";
-import { addToTrashService } from "../../services/trash-services/addToTrashService";
+import { useAuth } from "../contexts/auth-context";
+import { useNotes } from "../contexts/notes-context";
+import {
+  addToArchivesService,
+  restoreFromArchivesService,
+} from "../services/archive-services";
+import { deleteNoteService } from "../services/note-services";
+import { addToTrashService } from "../services/trash-services";
 
 const useNoteCardHandlers = (note) => {
   const {
@@ -47,6 +50,27 @@ const useNoteCardHandlers = (note) => {
       }
     } catch (error) {
       console.error(error);
+      // replace this with proper error handling on view
+    }
+  };
+
+  const restoreFromArchivesClickHandler = async () => {
+    try {
+      const response = await restoreFromArchivesService(note, token);
+      console.log(response);
+      const {
+        status,
+        data: { notes, archives },
+      } = response;
+      if (status === 200) {
+        notesDispatch({
+          type: "RESTORE_NOTE_FROM_ARCHIVES",
+          payload: { notes, archives },
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      // replace this with proper error handling on view
     }
   };
 
@@ -72,6 +96,7 @@ const useNoteCardHandlers = (note) => {
     editClickHandler,
     deleteClickHandler,
     addToArchivesClickHandler,
+    restoreFromArchivesClickHandler,
     addToTrashClickHandler,
   };
 };
