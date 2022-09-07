@@ -8,6 +8,7 @@ import {
 import { deleteNoteService } from "../services/note-services";
 import {
   addToTrashService,
+  deleteFromTrashService,
   restoreFromTrashService,
 } from "../services/trash-services";
 
@@ -89,6 +90,7 @@ const useNoteCardHandlers = (note) => {
       }
     } catch (error) {
       console.error(error);
+      // replace this with proper error handling on view
     }
   };
 
@@ -107,18 +109,41 @@ const useNoteCardHandlers = (note) => {
       }
     } catch (error) {
       console.error(error);
+      // replace this with proper error handling on view
     }
   };
 
   const restoreFromTrashClickHandler = async () => {
-    const response = await restoreFromTrashService(note, token);
-    console.log(response);
-    const {
-      status,
-      data: { notes, trash },
-    } = response;
-    if (status === 200) {
-      notesDispatch({ type: "RESTORE_FROM_TRASH", payload: { notes, trash } });
+    try {
+      const response = await restoreFromTrashService(note, token);
+      const {
+        status,
+        data: { notes, trash },
+      } = response;
+      if (status === 200) {
+        notesDispatch({
+          type: "RESTORE_FROM_TRASH",
+          payload: { notes, trash },
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const deleteFromTrashClickHandler = async () => {
+    try {
+      const response = await deleteFromTrashService(note, token);
+      const {
+        status,
+        data: { trash },
+      } = response;
+      if (status === 200) {
+        notesDispatch({ type: "DELETE_FROM_TRASH", payload: trash });
+      }
+    } catch (error) {
+      console.log(error);
+      //replace this with proper error handling on view
     }
   };
 
@@ -130,6 +155,7 @@ const useNoteCardHandlers = (note) => {
     archivedNoteDeleteClickHandler,
     addToTrashClickHandler,
     restoreFromTrashClickHandler,
+    deleteFromTrashClickHandler,
   };
 };
 

@@ -16,9 +16,9 @@ const NotesProvider = ({ children }) => {
       case "INIT_NOTES":
         return {
           ...notesState,
-          notes: [...notesAction.payload.notes],
-          notesArchived: [...notesAction.payload.archives],
-          notesTrashed: [...notesAction.payload.trashed],
+          notes: notesAction.payload.notes,
+          notesArchived: notesAction.payload.archives,
+          notesTrashed: notesAction.payload.trashed,
           loader: false,
         };
       case "SET_LOADER_TRUE":
@@ -29,14 +29,14 @@ const NotesProvider = ({ children }) => {
       case "ADD_NOTE":
         return {
           ...notesState,
-          notes: [...notesAction.payload],
+          notes: notesAction.payload,
           modalNoteInput: { title: "", content: "" },
           modalNoteInputIsOpen: false,
         };
       case "EDIT_NOTE":
         return {
           ...notesState,
-          notes: [...notesAction.payload],
+          notes: notesAction.payload,
           modalNoteInput: { title: "", content: "" },
           modalNoteInputIsOpen: false,
           isEditing: false,
@@ -44,7 +44,7 @@ const NotesProvider = ({ children }) => {
       case "DELETE_NOTE":
         return {
           ...notesState,
-          notes: [...notesAction.payload],
+          notes: notesAction.payload,
         };
       case "OPEN_MODAL_NOTE_INPUT":
         return {
@@ -55,7 +55,7 @@ const NotesProvider = ({ children }) => {
         return {
           ...notesState,
           modalNoteInputIsOpen: true,
-          modalNoteInput: { ...notesAction.payload },
+          modalNoteInput: notesAction.payload,
           isEditing: true,
         };
       case "CLOSE_MODAL_NOTE_INPUT":
@@ -75,31 +75,36 @@ const NotesProvider = ({ children }) => {
       case "ADD_NOTE_TO_ARCHIVES":
         return {
           ...notesState,
-          notes: [...notesAction.payload.notes],
-          notesArchived: [...notesAction.payload.archives],
+          notes: notesAction.payload.notes,
+          notesArchived: notesAction.payload.archives,
         };
       case "RESTORE_NOTE_FROM_ARCHIVES":
         return {
           ...notesState,
-          notes: [...notesAction.payload.notes],
-          notesArchived: [...notesAction.payload.archives],
+          notes: notesAction.payload.notes,
+          notesArchived: notesAction.payload.archives,
         };
       case "DELETE_NOTE_FROM_ARCHIVES":
         return {
           ...notesState,
-          notesArchived: [...notesAction.payload],
+          notesArchived: notesAction.payload,
         };
       case "ADD_NOTE_TO_TRASH":
         return {
           ...notesState,
-          notes: [...notesAction.payload.notes],
-          notesTrashed: [...notesAction.payload.trash],
+          notes: notesAction.payload.notes,
+          notesTrashed: notesAction.payload.trash,
         };
       case "RESTORE_FROM_TRASH":
         return {
           ...notesState,
-          notes: [...notesAction.payload.notes],
-          notesTrashed: [...notesAction.payload.trash],
+          notes: notesAction.payload.notes,
+          notesTrashed: notesAction.payload.trash,
+        };
+      case "DELETE_FROM_TRASH":
+        return {
+          ...notesState,
+          notesTrashed: notesAction.payload,
         };
       default:
         throw new Error("Invalid action type");
