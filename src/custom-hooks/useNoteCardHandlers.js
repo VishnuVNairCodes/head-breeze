@@ -57,7 +57,6 @@ const useNoteCardHandlers = (note) => {
   const restoreFromArchivesClickHandler = async () => {
     try {
       const response = await restoreFromArchivesService(note, token);
-      console.log(response);
       const {
         status,
         data: { notes, archives },

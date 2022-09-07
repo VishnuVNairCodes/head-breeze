@@ -31,7 +31,7 @@ const NoteCard = ({ note, pageName }) => {
       <section className="note-footer">
         <p className="note-footer-date">Created on 26/10/2021</p>
         <div className="note-footer-btn-container">
-          {pageName !== "TRASH" && (
+          {pageName === "HOME" && (
             <>
               <button className="btn note-card-btn" onClick={editClickHandler}>
                 <i className="bi bi-pencil"></i>
@@ -42,21 +42,28 @@ const NoteCard = ({ note, pageName }) => {
               <button className="btn note-card-btn">
                 <i className="bi bi-tag"></i>
               </button>
-              {pageName !== "ARCHIVES" ? (
-                <button
-                  className="btn note-card-btn"
-                  onClick={addToArchivesClickHandler}
-                >
-                  <i className="bi bi-arrow-down-square"></i>
-                </button>
-              ) : (
-                <button
-                  className="btn note-card-btn"
-                  onClick={restoreFromArchivesClickHandler}
-                >
-                  <i className="bi bi-arrow-up-square"></i>
-                </button>
-              )}
+              <button
+                className="btn note-card-btn"
+                onClick={addToArchivesClickHandler}
+              >
+                <i className="bi bi-arrow-down-square"></i>
+              </button>
+              <button
+                className="btn note-card-btn"
+                onClick={addToTrashClickHandler}
+              >
+                <i className="bi bi-trash3"></i>
+              </button>
+            </>
+          )}
+          {pageName === "ARCHIVES" && (
+            <>
+              <button
+                className="btn note-card-btn"
+                onClick={restoreFromArchivesClickHandler}
+              >
+                <i className="bi bi-arrow-up-square"></i>
+              </button>
               <button
                 className="btn note-card-btn"
                 onClick={addToTrashClickHandler}
