@@ -6,7 +6,6 @@ const NoteCard = ({ note, pageName }) => {
 
   const {
     editClickHandler,
-    noteDeleteClickHandler,
     addToArchivesClickHandler,
     restoreFromArchivesClickHandler,
     archivedNoteDeleteClickHandler,
