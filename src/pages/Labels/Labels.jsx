@@ -1,10 +1,10 @@
-import { Header, Main, NavBar } from "../components";
+import { Header, Main, NavBar } from "../../components";
 
 const Labels = () => (
   <div className="app-layout">
     <Header />
     <NavBar />
-    <Main />
+    <Main pageName="LABELS" />
   </div>
 );
 

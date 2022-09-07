@@ -1,8 +1,8 @@
 import Modal from "react-modal";
-import { useAuth } from "../contexts/auth-context";
-import { useNotes } from "../contexts/notes-context";
-import { editNoteService } from "../services/note-services";
-import { addNoteService } from "../services/note-services/addNoteService";
+import { useAuth } from "../../contexts/auth-context";
+import { useNotes } from "../../contexts/notes-context";
+import { editNoteService } from "../../services/note-services";
+import { addNoteService } from "../../services/note-services/addNoteService";
 
 import "./ModalNoteInput.css";
 

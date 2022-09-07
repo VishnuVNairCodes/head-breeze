@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import "./Header.css";
-import { SearchFilterSort } from "../components";
+import { SearchFilterSort } from "../../components";
 
 const Header = () => {
   return (

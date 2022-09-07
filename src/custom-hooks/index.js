@@ -1,0 +1,1 @@
+export { useNoteCardHandlers } from "./useNoteCardHandlers";

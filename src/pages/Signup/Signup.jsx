@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { NavBar } from "../components";
-import { useAuth } from "../contexts/auth-context";
+import { NavBar } from "../../components";
+import { useAuth } from "../../contexts/auth-context";
 
 const Signup = () => {
   const { signupHandler } = useAuth();

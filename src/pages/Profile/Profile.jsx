@@ -1,4 +1,4 @@
-import { Header, NavBar } from "../components";
+import { Header, NavBar } from "../../components";
 
 const Profile = () => (
   <div className="app-layout">

@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
-import { useAuth } from "../contexts/auth-context";
-import { useNotes } from "../contexts/notes-context";
-import { ModalNoteInput } from "./ModalNoteInput";
+import { useAuth } from "../../contexts/auth-context";
+import { useNotes } from "../../contexts/notes-context";
+import { ModalNoteInput } from "../../components";
 
 import "./NavBar.css";
 
@@ -42,7 +42,7 @@ const NavBar = () => {
                 className="nav-list-item-link"
                 to="/archive"
               >
-                <i className="bi bi-archive"></i>Archive
+                <i className="bi bi-archive"></i>Archives
               </NavLink>
             </li>
             <li className="nav-list-item">
