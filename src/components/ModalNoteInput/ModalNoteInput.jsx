@@ -1,4 +1,4 @@
-import Modal from "react-modal";
+import ReactModal from "react-modal";
 import { useAuth } from "../../contexts/auth-context";
 import { useNotes } from "../../contexts/notes-context";
 import { editNoteService } from "../../services/note-services";
@@ -6,7 +6,7 @@ import { addNoteService } from "../../services/note-services/addNoteService";
 
 import "./ModalNoteInput.css";
 
-Modal.setAppElement("#root");
+ReactModal.setAppElement("#root");
 
 const ModalNoteInput = () => {
   const {
@@ -37,7 +37,7 @@ const ModalNoteInput = () => {
         status,
         data: { notes },
       } = response;
-      console.log(notes);
+      console.log(notes, "test");
       if (status === 201) {
         notesDispatch({
           type: isEditing ? "EDIT_NOTE" : "ADD_NOTE",
@@ -51,7 +51,7 @@ const ModalNoteInput = () => {
   };
 
   return (
-    <Modal
+    <ReactModal
       className="modal-note-input"
       isOpen={modalNoteInputIsOpen}
       onRequestClose={() => {
@@ -93,7 +93,7 @@ const ModalNoteInput = () => {
           </button>
         </div>
       </form>
-    </Modal>
+    </ReactModal>
   );
 };
 

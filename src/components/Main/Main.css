@@ -1,7 +1,7 @@
 .main {
   padding: 4.8rem 0;
   overflow-y: scroll;
-  background-color: var(--main-background);
+  background-color: var(--main-bg);
 }
 
 .main-inner-container {

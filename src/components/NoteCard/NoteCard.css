@@ -5,7 +5,30 @@
   gap: 2.4rem;
   border: 1px solid var(--component-border);
   border-radius: 4px;
-  background-color: var(--white);
+}
+
+.note-card-color-0 {
+  background-color: var(--note-color-0);
+}
+
+.note-card-color-1 {
+  background-color: var(--note-color-1);
+}
+
+.note-card-color-2 {
+  background-color: var(--note-color-2);
+}
+
+.note-card-color-3 {
+  background-color: var(--note-color-3);
+}
+
+.note-card-color-4 {
+  background-color: var(--note-color-4);
+}
+
+.note-card-color-5 {
+  background-color: var(--note-color-5);
 }
 
 .note-header,
@@ -37,9 +60,14 @@
   background-color: var(--component-border);
 }
 
+.note-footer {
+  position: relative;
+}
+
 .note-footer-btn-container {
   display: flex;
   gap: 2.4rem;
+  position: relative;
 }
 
 .note-card-btn {

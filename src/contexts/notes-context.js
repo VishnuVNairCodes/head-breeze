@@ -11,6 +11,12 @@ const NotesProvider = ({ children }) => {
     currentAuthInfo: { token },
   } = useAuth();
 
+  const modalNoteInputInitialState = {
+    title: "",
+    content: "",
+    noteColorOption: 0,
+  };
+
   const notesReducer = (notesState, notesAction) => {
     switch (notesAction.type) {
       case "INIT_NOTES":
@@ -30,14 +36,14 @@ const NotesProvider = ({ children }) => {
         return {
           ...notesState,
           notes: notesAction.payload,
-          modalNoteInput: { title: "", content: "" },
+          modalNoteInput: modalNoteInputInitialState,
           modalNoteInputIsOpen: false,
         };
       case "EDIT_NOTE":
         return {
           ...notesState,
           notes: notesAction.payload,
-          modalNoteInput: { title: "", content: "" },
+          modalNoteInput: modalNoteInputInitialState,
           modalNoteInputIsOpen: false,
           isEditing: false,
         };
@@ -61,7 +67,7 @@ const NotesProvider = ({ children }) => {
       case "CLOSE_MODAL_NOTE_INPUT":
         return {
           ...notesState,
-          modalNoteInput: { title: "", content: "" },
+          modalNoteInput: modalNoteInputInitialState,
           modalNoteInputIsOpen: false,
         };
       case "HANDLE_NOTE_INPUT_CHANGE":
@@ -106,6 +112,12 @@ const NotesProvider = ({ children }) => {
           ...notesState,
           notesTrashed: notesAction.payload,
         };
+      case "CHANGE_NOTE_COLOR":
+        return {
+          ...notesState,
+          notes: notesAction.payload,
+        };
+
       default:
         throw new Error("Invalid action type");
     }
@@ -117,7 +129,7 @@ const NotesProvider = ({ children }) => {
     notesTrashed: [],
     labels: [],
     loader: false,
-    modalNoteInput: { title: "", content: "" },
+    modalNoteInput: modalNoteInputInitialState,
     modalNoteInputIsOpen: false,
     isEditing: false,
   });
