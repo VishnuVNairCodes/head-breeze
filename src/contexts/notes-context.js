@@ -195,7 +195,12 @@ const NotesProvider = ({ children }) => {
   }, [token]);
 
   return (
-    <NotesContext.Provider value={{ notesState, notesDispatch }}>
+    <NotesContext.Provider
+      value={{
+        notesState,
+        notesDispatch,
+      }}
+    >
       {children}
     </NotesContext.Provider>
   );

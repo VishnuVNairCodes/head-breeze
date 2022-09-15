@@ -5,7 +5,7 @@ import { ColorPalette } from "../ColorPalette/ColorPalette";
 import "./NoteCard.css";
 
 const NoteCard = ({ note, pageName }) => {
-  const { title, content, noteColorOption } = note;
+  const { title, content, createdAt, noteColorOption } = note;
 
   const [showOptions, setShowOptions] = useState({
     showColorPalette: false,
@@ -25,6 +25,7 @@ const NoteCard = ({ note, pageName }) => {
     <article className={`note-card note-card-color-${noteColorOption}`}>
       <section className="note-header">
         <h2 className="note-header-title">{title}</h2>
+        <p className="note-header-date">{createdAt}</p>
       </section>
       <section className="note-content">
         <p>{content}</p>
@@ -35,7 +36,6 @@ const NoteCard = ({ note, pageName }) => {
         <span className="note-labels-item">Label 3</span>
       </section>
       <section className="note-footer">
-        <p className="note-footer-date">Created on 26/10/2021</p>
         <div className="note-footer-btn-container">
           {pageName === "HOME" && (
             <>

@@ -42,8 +42,9 @@
   font-size: 1.8rem;
 }
 
-.note-footer-date {
+.note-header-date {
   color: var(--component);
+  font-size: 1.2rem;
 }
 
 .note-labels {
