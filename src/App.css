@@ -8,12 +8,19 @@
   --primary-shade: #03140f;
   --font-default: #000;
   --white: #fff;
-  --main-background: #f8f9fa;
+  --main-bg: #f8f9fa;
   --border: #f1f3f5;
-  --nav-hover: #e9ecef;
+  --nav-hover: #e6fcf5;
   --component: #868e96;
   --component-hover: #495057;
   --component-border: #ced4da;
+  --color-palette-bg: #ffe8cc;
+  --note-color-0: #fff;
+  --note-color-1: #ffa8a8;
+  --note-color-2: #e599f7;
+  --note-color-3: #b197fc;
+  --note-color-4: #66d9e8;
+  --note-color-5: #74c0fc;
 }
 
 *,

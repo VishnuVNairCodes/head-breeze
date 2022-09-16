@@ -1,0 +1,45 @@
+.color-palette {
+  display: flex;
+  position: absolute;
+  top: -25%;
+  left: 0;
+  gap: 8px;
+  padding: 4px;
+  border-radius: 9px;
+  transform: translate(0, -100%);
+  background-color: var(--color-palette-bg);
+}
+
+.color-palette-option {
+  list-style: none;
+}
+
+.color-palette-option-btn {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+}
+
+.color-palette-option-0 {
+  background-color: var(--note-color-0);
+}
+
+.color-palette-option-1 {
+  background-color: var(--note-color-1);
+}
+
+.color-palette-option-2 {
+  background-color: var(--note-color-2);
+}
+
+.color-palette-option-3 {
+  background-color: var(--note-color-3);
+}
+
+.color-palette-option-4 {
+  background-color: var(--note-color-4);
+}
+
+.color-palette-option-5 {
+  background-color: var(--note-color-5);
+}

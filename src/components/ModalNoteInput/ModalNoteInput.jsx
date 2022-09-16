@@ -1,12 +1,15 @@
-import Modal from "react-modal";
+import { useState } from "react";
+import ReactModal from "react-modal";
 import { useAuth } from "../../contexts/auth-context";
 import { useNotes } from "../../contexts/notes-context";
 import { editNoteService } from "../../services/note-services";
 import { addNoteService } from "../../services/note-services/addNoteService";
+import { getCurrentDate } from "../../utils";
+import { ColorPalette } from "../ColorPalette/ColorPalette";
 
 import "./ModalNoteInput.css";
 
-Modal.setAppElement("#root");
+ReactModal.setAppElement("#root");
 
 const ModalNoteInput = () => {
   const {
@@ -17,6 +20,8 @@ const ModalNoteInput = () => {
     notesState: { modalNoteInput, modalNoteInputIsOpen, isEditing },
     notesDispatch,
   } = useNotes();
+
+  const [showOptions, setShowOptions] = useState({ showColorPalette: false });
 
   const inputChangeHandler = (e) => {
     const name = e.target.name;
@@ -29,15 +34,16 @@ const ModalNoteInput = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    const createdAt = getCurrentDate();
     try {
       const response = isEditing
         ? await editNoteService(modalNoteInput, token)
-        : await addNoteService(modalNoteInput, token);
+        : await addNoteService({ ...modalNoteInput, createdAt }, token);
       const {
         status,
         data: { notes },
       } = response;
-      console.log(notes);
+      console.log(notes, "test");
       if (status === 201) {
         notesDispatch({
           type: isEditing ? "EDIT_NOTE" : "ADD_NOTE",
@@ -51,8 +57,8 @@ const ModalNoteInput = () => {
   };
 
   return (
-    <Modal
-      className="modal-note-input"
+    <ReactModal
+      className={`modal-note-input modal-note-input-color-${modalNoteInput.noteColorOption}`}
       isOpen={modalNoteInputIsOpen}
       onRequestClose={() => {
         notesDispatch({ type: "CLOSE_MODAL_NOTE_INPUT" });
@@ -77,6 +83,30 @@ const ModalNoteInput = () => {
           className="modal-note-input-content"
           placeholder="Take a note..."
         />
+        <div className="modal-note-input-action-container">
+          {showOptions.showColorPalette && (
+            <ColorPalette
+              note="modal-note-input"
+              showOptions={showOptions}
+              setShowOptions={setShowOptions}
+            />
+          )}
+          <button
+            className="btn note-card-btn"
+            type="button"
+            onClick={() =>
+              setShowOptions((prev) => ({
+                ...prev,
+                showColorPalette: !prev.showColorPalette,
+              }))
+            }
+          >
+            <i className="bi bi-palette"></i>
+          </button>
+          <button className="btn note-card-btn" type="button">
+            <i className="bi bi-tag"></i>
+          </button>
+        </div>
         <div className="modal-note-input-btn-container">
           <button
             type="button"
@@ -93,7 +123,7 @@ const ModalNoteInput = () => {
           </button>
         </div>
       </form>
-    </Modal>
+    </ReactModal>
   );
 };
 

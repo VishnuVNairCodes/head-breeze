@@ -1,8 +1,15 @@
+import { useState } from "react";
 import { useNoteCardHandlers } from "../../custom-hooks";
+import { ColorPalette } from "../ColorPalette/ColorPalette";
+
 import "./NoteCard.css";
 
 const NoteCard = ({ note, pageName }) => {
-  const { title, content } = note;
+  const { title, content, createdAt, noteColorOption } = note;
+
+  const [showOptions, setShowOptions] = useState({
+    showColorPalette: false,
+  });
 
   const {
     editClickHandler,
@@ -15,12 +22,10 @@ const NoteCard = ({ note, pageName }) => {
   } = useNoteCardHandlers(note);
 
   return (
-    <article className="note-card">
+    <article className={`note-card note-card-color-${noteColorOption}`}>
       <section className="note-header">
         <h2 className="note-header-title">{title}</h2>
-        <button className="btn note-card-btn">
-          <i className="bi bi-pin-fill"></i>
-        </button>
+        <p className="note-header-date">{createdAt}</p>
       </section>
       <section className="note-content">
         <p>{content}</p>
@@ -31,14 +36,28 @@ const NoteCard = ({ note, pageName }) => {
         <span className="note-labels-item">Label 3</span>
       </section>
       <section className="note-footer">
-        <p className="note-footer-date">Created on 26/10/2021</p>
         <div className="note-footer-btn-container">
           {pageName === "HOME" && (
             <>
+              {showOptions.showColorPalette && (
+                <ColorPalette
+                  note={note}
+                  showOptions={showOptions}
+                  setShowOptions={setShowOptions}
+                />
+              )}
               <button className="btn note-card-btn" onClick={editClickHandler}>
                 <i className="bi bi-pencil"></i>
               </button>
-              <button className="btn note-card-btn">
+              <button
+                className="btn note-card-btn"
+                onClick={() =>
+                  setShowOptions((prev) => ({
+                    ...prev,
+                    showColorPalette: !prev.showColorPalette,
+                  }))
+                }
+              >
                 <i className="bi bi-palette"></i>
               </button>
               <button className="btn note-card-btn">
