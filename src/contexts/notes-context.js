@@ -47,6 +47,14 @@ const NotesProvider = ({ children }) => {
           modalNoteInputIsOpen: false,
           isEditing: false,
         };
+      case "INPUT_NOTE_COLOR":
+        return {
+          ...notesState,
+          modalNoteInput: {
+            ...notesState.modalNoteInput,
+            noteColorOption: notesAction.payload,
+          },
+        };
       case "DELETE_NOTE":
         return {
           ...notesState,

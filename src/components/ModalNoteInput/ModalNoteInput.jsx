@@ -1,8 +1,11 @@
+import { useState } from "react";
 import ReactModal from "react-modal";
 import { useAuth } from "../../contexts/auth-context";
 import { useNotes } from "../../contexts/notes-context";
 import { editNoteService } from "../../services/note-services";
 import { addNoteService } from "../../services/note-services/addNoteService";
+import { getCurrentDate } from "../../utils";
+import { ColorPalette } from "../ColorPalette/ColorPalette";
 
 import "./ModalNoteInput.css";
 
@@ -18,6 +21,8 @@ const ModalNoteInput = () => {
     notesDispatch,
   } = useNotes();
 
+  const [showOptions, setShowOptions] = useState({ showColorPalette: false });
+
   const inputChangeHandler = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -29,10 +34,11 @@ const ModalNoteInput = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    const createdAt = getCurrentDate();
     try {
       const response = isEditing
         ? await editNoteService(modalNoteInput, token)
-        : await addNoteService(modalNoteInput, token);
+        : await addNoteService({ ...modalNoteInput, createdAt }, token);
       const {
         status,
         data: { notes },
@@ -52,7 +58,7 @@ const ModalNoteInput = () => {
 
   return (
     <ReactModal
-      className="modal-note-input"
+      className={`modal-note-input modal-note-input-color-${modalNoteInput.noteColorOption}`}
       isOpen={modalNoteInputIsOpen}
       onRequestClose={() => {
         notesDispatch({ type: "CLOSE_MODAL_NOTE_INPUT" });
@@ -77,6 +83,30 @@ const ModalNoteInput = () => {
           className="modal-note-input-content"
           placeholder="Take a note..."
         />
+        <div className="modal-note-input-action-container">
+          {showOptions.showColorPalette && (
+            <ColorPalette
+              note="modal-note-input"
+              showOptions={showOptions}
+              setShowOptions={setShowOptions}
+            />
+          )}
+          <button
+            className="btn note-card-btn"
+            type="button"
+            onClick={() =>
+              setShowOptions((prev) => ({
+                ...prev,
+                showColorPalette: !prev.showColorPalette,
+              }))
+            }
+          >
+            <i className="bi bi-palette"></i>
+          </button>
+          <button className="btn note-card-btn" type="button">
+            <i className="bi bi-tag"></i>
+          </button>
+        </div>
         <div className="modal-note-input-btn-container">
           <button
             type="button"

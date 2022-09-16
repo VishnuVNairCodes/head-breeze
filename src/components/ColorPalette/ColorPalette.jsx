@@ -16,25 +16,29 @@ const ColorPalette = ({ note, showOptions, setShowOptions }) => {
       ...showOptions,
       showColorPalette: false,
     }));
-    try {
-      const response = await editNoteService(
-        {
-          ...note,
-          noteColorOption: colorOption,
-        },
-        token
-      );
-      const {
-        status,
-        data: { notes },
-      } = response;
-      console.log(notes);
-      if (status === 201) {
-        notesDispatch({ type: "CHANGE_NOTE_COLOR", payload: notes });
+    if (note === "modal-note-input") {
+      notesDispatch({ type: "INPUT_NOTE_COLOR", payload: colorOption });
+    } else {
+      try {
+        const response = await editNoteService(
+          {
+            ...note,
+            noteColorOption: colorOption,
+          },
+          token
+        );
+        const {
+          status,
+          data: { notes },
+        } = response;
+        console.log(notes);
+        if (status === 201) {
+          notesDispatch({ type: "CHANGE_NOTE_COLOR", payload: notes });
+        }
+      } catch (error) {
+        console.error(error);
+        //replace this with proper error handling on the view
       }
-    } catch (error) {
-      console.error(error);
-      //replace this with proper error handling on the view
     }
   };
 
