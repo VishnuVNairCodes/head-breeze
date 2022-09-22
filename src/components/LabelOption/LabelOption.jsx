@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/auth-context";
 import { useNotes } from "../../contexts/notes-context";
 import { editNoteService } from "../../services/note-services";
@@ -9,10 +9,10 @@ const LabelOption = ({ note, label }) => {
   } = useAuth();
   const { notesDispatch } = useNotes();
 
-  const isLabelPresentInNote = () =>
-    note.tags.find((tag) => tag.id === label.id) ? true : false;
+  // const isLabelPresentInNote = () =>
+  //   note.tags.find((tag) => tag.id === label.id) ? true : false;
 
-  const [isLabelInNote, setIsLabelInNote] = useState(isLabelPresentInNote());
+  // const [isLabelInNote, setIsLabelInNote] = useState(isLabelPresentInNote());
 
   const toggleCheckboxHandler = async (label) => {
     const getNewNote = () => {
@@ -56,7 +56,7 @@ const LabelOption = ({ note, label }) => {
         id="label-options-checkbox"
         className="label-options-checkbox"
         type="checkbox"
-        checked={isLabelInNote}
+        checked={note.tags.find((tag) => tag.id === label.id)}
         onChange={() => toggleCheckboxHandler(label)}
       />
       {label.value}
