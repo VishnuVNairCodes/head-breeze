@@ -82,14 +82,29 @@ select {
   transition: all 0.3s;
 }
 
+.btn-primary,
+.btn-primary-outline {
+  border-radius: 1rem;
+}
+
 .btn-primary {
   background-color: var(--primary);
   color: var(--white);
-  border-radius: 1rem;
 }
 
 .btn-primary:hover {
   background-color: var(--primary-hover);
+}
+
+.btn-primary-outline {
+  background-color: var(--white);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.btn-primary-outline:hover {
+  color: var(--primary-hover);
+  border: 1px solid var(--primary-hover);
 }
 
 ::placeholder {
