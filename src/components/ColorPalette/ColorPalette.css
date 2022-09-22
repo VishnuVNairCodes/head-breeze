@@ -8,6 +8,8 @@
   border-radius: 9px;
   transform: translate(0, -100%);
   background-color: var(--color-palette-bg);
+  box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.15);
+  /* border: 1px solid red; */
 }
 
 .color-palette-option {

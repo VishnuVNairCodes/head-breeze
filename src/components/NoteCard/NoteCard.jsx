@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { useNoteCardHandlers } from "../../custom-hooks";
 import { ColorPalette } from "../ColorPalette/ColorPalette";
+import { LabelOptions } from "../LabelOptions/LabelOptions";
 
 import "./NoteCard.css";
 
 const NoteCard = ({ note, pageName }) => {
-  const { title, content, createdAt, noteColorOption } = note;
+  const { title, content, createdAt, noteColorOption, tags } = note;
 
   const [showOptions, setShowOptions] = useState({
     showColorPalette: false,
+    showLabelOptions: false,
   });
 
   const {
@@ -31,20 +33,21 @@ const NoteCard = ({ note, pageName }) => {
         <p>{content}</p>
       </section>
       <section className="note-labels">
-        <span className="note-labels-item">Label 1</span>
-        <span className="note-labels-item">Label 2</span>
-        <span className="note-labels-item">Label 3</span>
+        {tags.map((tag) => (
+          <span key={tag.id} className="note-labels-item">
+            {tag.value}
+          </span>
+        ))}
       </section>
       <section className="note-footer">
         <div className="note-footer-btn-container">
           {pageName === "HOME" && (
             <>
               {showOptions.showColorPalette && (
-                <ColorPalette
-                  note={note}
-                  showOptions={showOptions}
-                  setShowOptions={setShowOptions}
-                />
+                <ColorPalette note={note} setShowOptions={setShowOptions} />
+              )}
+              {showOptions.showLabelOptions && (
+                <LabelOptions note={note} setShowOptions={setShowOptions} />
               )}
               <button className="btn note-card-btn" onClick={editClickHandler}>
                 <i className="bi bi-pencil"></i>
@@ -53,14 +56,22 @@ const NoteCard = ({ note, pageName }) => {
                 className="btn note-card-btn"
                 onClick={() =>
                   setShowOptions((prev) => ({
-                    ...prev,
+                    showLabelOptions: false,
                     showColorPalette: !prev.showColorPalette,
                   }))
                 }
               >
                 <i className="bi bi-palette"></i>
               </button>
-              <button className="btn note-card-btn">
+              <button
+                className="btn note-card-btn"
+                onClick={() =>
+                  setShowOptions((prev) => ({
+                    showColorPalette: false,
+                    showLabelOptions: !prev.showLabelOptions,
+                  }))
+                }
+              >
                 <i className="bi bi-tag"></i>
               </button>
               <button

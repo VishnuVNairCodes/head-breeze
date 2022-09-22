@@ -70,12 +70,17 @@ const NavBar = () => {
           </li> */}
           </ul>
         </nav>
-        <button
-          className="btn btn-primary aside-create-note-btn"
-          onClick={() => notesDispatch({ type: "OPEN_MODAL_NOTE_INPUT" })}
-        >
-          Create New Note
-        </button>
+        <div className="aside-create-container">
+          <button className="btn btn-primary-outline aside-create-btn">
+            Create New Label
+          </button>
+          <button
+            className="btn btn-primary aside-create-btn"
+            onClick={() => notesDispatch({ type: "OPEN_MODAL_NOTE_INPUT" })}
+          >
+            Create New Note
+          </button>
+        </div>
         <ModalNoteInput />
       </div>
 

@@ -1,3 +1,4 @@
+// import { v4 as uuidv4 } from "uuid";
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { getArchivesService } from "../services/archive-services/getArchivesService";
 import { getNotesService } from "../services/note-services/getNotesService";
@@ -124,6 +125,31 @@ const NotesProvider = ({ children }) => {
         return {
           ...notesState,
           notes: notesAction.payload,
+        };
+
+      case "ADD_&_SELECT_LABEL":
+        return {
+          ...notesState,
+          labels: [...notesState.labels, notesAction.payload.label],
+          notes: notesAction.payload.notes,
+        };
+
+      case "TOGGLE_SELECT_LABEL":
+        // const getNewLabels = (oldLabels, label) => {
+        //   const updatedLabels = [...oldLabels];
+        //   const indexOfLabelToBeUpdated = updatedLabels.findIndex(
+        //     (item) => item.id === label.id
+        //   );
+        //   updatedLabels[indexOfLabelToBeUpdated] = label;
+        //   return updatedLabels;
+        // };
+        // const newLabels = getNewLabels(
+        //   notesState.labels,
+        //   notesAction.payload.label
+        // );
+        return {
+          ...notesState,
+          notes: notesAction.payload.notes,
         };
 
       default:

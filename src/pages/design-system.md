@@ -48,6 +48,7 @@
 --- 05 SHADOWS
 
 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+show-options -> 0px 0px 5px 3px rgba(0, 0, 0, 0.15);
 
 --- 06 BORDER-RADIUS
 
@@ -56,6 +57,7 @@ Medium: 11px
 
 note-card: 4px
 label: 1rem
+label-options: 4px
 --- 07 WHITESPACE
 
 - Spacing system (px)

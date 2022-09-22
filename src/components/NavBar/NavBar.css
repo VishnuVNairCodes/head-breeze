@@ -30,10 +30,16 @@
   background-color: var(--nav-hover);
 }
 
-.aside-create-note-btn {
+.aside-create-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 3.2rem;
+}
+
+.aside-create-btn {
   font-size: 1.8rem;
   padding: 1.6rem 3.2rem;
-  margin-top: 3.2rem;
 }
 
 .aside-logout-container {

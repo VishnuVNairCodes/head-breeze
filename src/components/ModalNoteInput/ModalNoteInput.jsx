@@ -6,6 +6,7 @@ import { editNoteService } from "../../services/note-services";
 import { addNoteService } from "../../services/note-services/addNoteService";
 import { getCurrentDate } from "../../utils";
 import { ColorPalette } from "../ColorPalette/ColorPalette";
+import { LabelOptions } from "../LabelOptions/LabelOptions";
 
 import "./ModalNoteInput.css";
 
@@ -21,7 +22,10 @@ const ModalNoteInput = () => {
     notesDispatch,
   } = useNotes();
 
-  const [showOptions, setShowOptions] = useState({ showColorPalette: false });
+  const [showOptions, setShowOptions] = useState({
+    showColorPalette: false,
+    showLabelOptions: false,
+  });
 
   const inputChangeHandler = (e) => {
     const name = e.target.name;
@@ -87,7 +91,12 @@ const ModalNoteInput = () => {
           {showOptions.showColorPalette && (
             <ColorPalette
               note="modal-note-input"
-              showOptions={showOptions}
+              setShowOptions={setShowOptions}
+            />
+          )}
+          {showOptions.showLabelOptions && (
+            <LabelOptions
+              note="modal-note-input"
               setShowOptions={setShowOptions}
             />
           )}
@@ -96,14 +105,23 @@ const ModalNoteInput = () => {
             type="button"
             onClick={() =>
               setShowOptions((prev) => ({
-                ...prev,
+                showLabelOptions: false,
                 showColorPalette: !prev.showColorPalette,
               }))
             }
           >
             <i className="bi bi-palette"></i>
           </button>
-          <button className="btn note-card-btn" type="button">
+          <button
+            className="btn note-card-btn"
+            type="button"
+            onClick={() =>
+              setShowOptions((prev) => ({
+                showColorPalette: false,
+                showLabelOptions: !prev.showLabelOptions,
+              }))
+            }
+          >
             <i className="bi bi-tag"></i>
           </button>
         </div>

@@ -3,7 +3,7 @@ import { useNotes } from "../../contexts/notes-context";
 import { editNoteService } from "../../services/note-services";
 import "./ColorPalette.css";
 
-const ColorPalette = ({ note, showOptions, setShowOptions }) => {
+const ColorPalette = ({ note, setShowOptions }) => {
   const {
     currentAuthInfo: { token },
   } = useAuth();
