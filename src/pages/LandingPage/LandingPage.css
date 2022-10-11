@@ -51,6 +51,10 @@
   gap: 1.6rem;
 }
 
+.landing-link {
+  text-decoration: none;
+}
+
 .hero-btn-primary,
 .hero-btn-secondary {
   font-size: 2rem;

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./LandingPage.css";
 
 const LandingPage = () => {
@@ -22,12 +23,15 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="hero-action">
-            <button className="btn btn-primary hero-btn-primary">
+            <Link
+              to="/signup"
+              className="btn btn-primary hero-btn-primary landing-link"
+            >
               Join Now
-            </button>
-            <button className="btn hero-btn-secondary">
+            </Link>
+            <Link to="/login" className="btn hero-btn-secondary landing-link">
               Already have an account?
-            </button>
+            </Link>
           </div>
 
           <div className="hero-img-container">
