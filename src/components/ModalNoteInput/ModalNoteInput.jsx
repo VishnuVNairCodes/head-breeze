@@ -112,7 +112,7 @@ const ModalNoteInput = () => {
           >
             <i className="bi bi-palette"></i>
           </button>
-          <button
+          {/* <button
             className="btn note-card-btn"
             type="button"
             onClick={() =>
@@ -123,7 +123,7 @@ const ModalNoteInput = () => {
             }
           >
             <i className="bi bi-tag"></i>
-          </button>
+          </button> */}
         </div>
         <div className="modal-note-input-btn-container">
           <button

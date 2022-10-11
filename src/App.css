@@ -61,8 +61,15 @@ select {
 .app-layout {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: auto 1fr;
   grid-template-rows: 6.4rem calc(100vh - 6.4rem);
+}
+
+.app-layout-inner {
+  display: flex;
+}
+
+.app-layout-inner Main {
+  flex-grow: 1;
 }
 
 .color-primary {

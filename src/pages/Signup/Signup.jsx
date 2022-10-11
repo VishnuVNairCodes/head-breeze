@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { NavBar } from "../../components";
 import { useAuth } from "../../contexts/auth-context";
 
 const Signup = () => {
@@ -21,7 +20,6 @@ const Signup = () => {
   return (
     <>
       <h1>Signup Page</h1>
-      <NavBar />
       <form onSubmit={(e) => signupHandler(e, userCredentials)}>
         <label htmlFor="email">
           Email:
