@@ -11,8 +11,19 @@
 }
 
 .header-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 3rem;
   font-weight: 700;
+  gap: 1rem;
+}
+
+.header-hamburger-btn {
+  font-size: 3rem;
+  color: var(--primary);
+  background-color: var(--nav-hover);
+  border-radius: 2px;
 }
 
 .header-brand-link {
