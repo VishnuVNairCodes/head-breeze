@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
 
+import "./AuthForm.css";
+
 const Login = () => {
   const loginLocation = useLocation();
   const navigate = useNavigate();
@@ -28,12 +30,16 @@ const Login = () => {
   });
 
   return (
-    <>
-      <h1>Login Page</h1>
-      <form onSubmit={(e) => loginHandler(e, userCredentials)}>
-        <label htmlFor="email">
-          Email:
+    <article className="auth-form-container">
+      <h1 className="auth-form-heading">Login Page</h1>
+      <form
+        className="auth-form"
+        onSubmit={(e) => loginHandler(e, userCredentials)}
+      >
+        <label htmlFor="email" className="auth-form-label">
+          <p>Email:</p>
           <input
+            className="auth-form-input"
             type="email"
             id="email"
             name="email"
@@ -41,19 +47,22 @@ const Login = () => {
             onChange={changeHandler}
           />
         </label>
-        <label htmlFor="password">
-          Password:
+        <label htmlFor="password" className="auth-form-label">
+          <p>Password:</p>
           <input
-            type="text"
+            className="auth-form-input"
+            type="password"
             id="password"
             name="password"
             value={userCredentials.password}
             onChange={changeHandler}
           />
-          <button type="submit">Login</button>
         </label>
+        <button className="btn btn-primary auth-form-btn" type="submit">
+          Login
+        </button>
       </form>
-    </>
+    </article>
   );
 };
 
