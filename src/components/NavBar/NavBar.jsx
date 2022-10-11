@@ -27,7 +27,7 @@ const NavBar = () => {
                 <i className="bi bi-house-door"></i>Home
               </NavLink>
             </li>
-            <li className="nav-list-item">
+            {/* <li className="nav-list-item">
               <NavLink
                 style={getActiveStyle}
                 className="nav-list-item-link"
@@ -35,7 +35,7 @@ const NavBar = () => {
               >
                 <i className="bi bi-tags"></i>Labels
               </NavLink>
-            </li>
+            </li> */}
             <li className="nav-list-item">
               <NavLink
                 style={getActiveStyle}
@@ -71,9 +71,9 @@ const NavBar = () => {
           </ul>
         </nav>
         <div className="aside-create-container">
-          <button className="btn btn-primary-outline aside-create-btn">
+          {/* <button className="btn btn-primary-outline aside-create-btn">
             Create New Label
-          </button>
+          </button> */}
           <button
             className="btn btn-primary aside-create-btn"
             onClick={() => notesDispatch({ type: "OPEN_MODAL_NOTE_INPUT" })}
