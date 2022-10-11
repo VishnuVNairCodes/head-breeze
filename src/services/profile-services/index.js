@@ -1,0 +1,1 @@
+export { getUserDetailsService } from "./getUserDetailsService";
