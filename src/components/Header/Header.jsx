@@ -2,13 +2,18 @@ import { Link } from "react-router-dom";
 
 import "./Header.css";
 import { SearchFilterSort } from "../../components";
+import { useNavBar } from "../../contexts/nav-context";
 
 const Header = () => {
+  const { setShowNavBar } = useNavBar();
   return (
     <header className="header">
       <div className="header-brand">
         <div className="header-hamburger">
-          <button className="btn header-hamburger-btn">
+          <button
+            className="btn header-hamburger-btn"
+            onClick={() => setShowNavBar((prev) => !prev)}
+          >
             <i className="bi bi-list"></i>
           </button>
         </div>
