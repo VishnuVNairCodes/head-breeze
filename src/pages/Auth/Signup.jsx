@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
 
 import "./AuthForm.css";
 
 const Signup = () => {
-  const { signupHandler } = useAuth();
+  const signupLocation = useLocation();
+  const navigate = useNavigate();
+
+  const { currentAuthInfo, signupHandler } = useAuth();
 
   const [userCredentials, setUserCredentials] = useState({
     email: "",
@@ -19,6 +23,14 @@ const Signup = () => {
     setUserCredentials((prev) => ({ ...prev, [name]: value }));
   };
 
+  useEffect(() => {
+    if (currentAuthInfo.token) {
+      navigate(signupLocation.state?.from?.pathname || "/home", {
+        replace: true,
+      });
+    }
+  });
+
   return (
     <article className="auth-form-container">
       <h1 className="auth-form-heading">Signup Page</h1>
@@ -32,7 +44,7 @@ const Signup = () => {
             className="auth-form-input"
             type="text"
             id="first-name"
-            name="first-name"
+            name="firstName"
             value={userCredentials.firstName}
             onChange={changeHandler}
           />
@@ -43,7 +55,7 @@ const Signup = () => {
             className="auth-form-input"
             type="text"
             id="last-name"
-            name="last-name"
+            name="lastName"
             value={userCredentials.lastName}
             onChange={changeHandler}
           />
