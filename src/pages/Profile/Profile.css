@@ -1,0 +1,30 @@
+.app-layout-inner {
+  position: relative;
+}
+
+.profile-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.4rem;
+  background-color: var(--nav-hover);
+  border-radius: 8px;
+  padding: 3.2rem;
+  text-align: center;
+}
+
+.profile-table {
+  border-collapse: collapse;
+}
+
+.profile-table td,
+.profile-table th {
+  border: 1px solid black;
+  padding: 2.4rem;
+  font-size: 2rem;
+}

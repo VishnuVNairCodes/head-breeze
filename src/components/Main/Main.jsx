@@ -7,6 +7,7 @@ const Main = ({ pageName }) => {
   const {
     notesState: { loader },
   } = useNotes();
+
   return (
     <main className="main">
       <div className="main-inner-container">
