@@ -1,8 +1,9 @@
-.app-layout-inner {
+.profile-container {
+  flex-grow: 1;
   position: relative;
 }
 
-.profile-container {
+.profile {
   position: absolute;
   top: 50%;
   left: 50%;

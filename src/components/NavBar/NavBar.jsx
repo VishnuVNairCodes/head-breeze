@@ -2,16 +2,37 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
 import { useNotes } from "../../contexts/notes-context";
 import { ModalNoteInput } from "../../components";
+import { getUserDetailsService } from "../../services/profile-services";
 
 import "./NavBar.css";
+import { useEffect, useState } from "react";
 
 const NavBar = () => {
-  const { logoutHandler } = useAuth();
+  const {
+    currentAuthInfo: { token },
+    logoutHandler,
+  } = useAuth();
   const { notesDispatch } = useNotes();
 
   const getActiveStyle = ({ isActive }) => ({
     backgroundColor: isActive ? "var(--nav-hover)" : "",
   });
+
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const {
+          data: { user },
+        } = await getUserDetailsService(token);
+        setUserName(`${user.firstName} ${user.lastName}`);
+      } catch (error) {
+        console.error(error);
+        //replace this with proper error handling in view
+      }
+    })();
+  }, [token]);
 
   return (
     <aside className="aside">
@@ -63,11 +84,6 @@ const NavBar = () => {
                 <i className="bi bi-person"></i>Profile
               </NavLink>
             </li>
-            {/* <li className="nav-list-item">
-            <NavLink style={getActiveStyle} className="nav-list-item-link" to="/login">
-              <i className="bi bi-box-arrow-in-right"></i>Login
-            </NavLink>
-          </li> */}
           </ul>
         </nav>
         <div className="aside-create-container">
@@ -85,7 +101,7 @@ const NavBar = () => {
       </div>
 
       <div className="aside-logout-container">
-        Adarsh Balika
+        {userName}
         <button
           className="btn aside-logout-container-btn"
           onClick={logoutHandler}
