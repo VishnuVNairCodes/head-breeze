@@ -2,37 +2,19 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
 import { useNotes } from "../../contexts/notes-context";
 import { ModalNoteInput } from "../../components";
-import { getUserDetailsService } from "../../services/profile-services";
+import { useProfile } from "../../contexts/profile-context";
 
 import "./NavBar.css";
-import { useEffect, useState } from "react";
 
 const NavBar = () => {
-  const {
-    currentAuthInfo: { token },
-    logoutHandler,
-  } = useAuth();
+  const { logoutHandler } = useAuth();
   const { notesDispatch } = useNotes();
 
   const getActiveStyle = ({ isActive }) => ({
     backgroundColor: isActive ? "var(--nav-hover)" : "",
   });
 
-  const [userName, setUserName] = useState("");
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const {
-          data: { user },
-        } = await getUserDetailsService(token);
-        setUserName(`${user.firstName} ${user.lastName}`);
-      } catch (error) {
-        console.error(error);
-        //replace this with proper error handling in view
-      }
-    })();
-  }, [token]);
+  const { userName } = useProfile();
 
   return (
     <aside className="aside">
