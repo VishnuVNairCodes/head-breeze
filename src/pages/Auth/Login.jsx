@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
 
 import "./AuthForm.css";
@@ -19,6 +19,13 @@ const Login = () => {
     const name = e.target.name;
     const value = e.target.value;
     setUserCredentials((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const guestLoginHandler = () => {
+    setUserCredentials((prev) => ({
+      email: "vishnuvnair.ui@gmail.com",
+      password: "testPassword@123",
+    }));
   };
 
   useEffect(() => {
@@ -58,9 +65,20 @@ const Login = () => {
             onChange={changeHandler}
           />
         </label>
-        <button className="btn btn-primary auth-form-btn" type="submit">
-          Login
-        </button>
+        <section className="auth-action">
+          <button className="btn btn-primary auth-form-btn" type="submit">
+            Login
+          </button>
+          <button
+            className="btn btn-primary-outline auth-form-btn"
+            onClick={guestLoginHandler}
+          >
+            Login as Guest
+          </button>
+          <Link to="/signup" className="btn auth-form-btn auth-form-link">
+            Create New Account
+          </Link>
+        </section>
       </form>
     </article>
   );

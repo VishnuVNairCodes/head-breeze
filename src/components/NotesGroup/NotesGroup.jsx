@@ -27,18 +27,22 @@ const NotesGroup = ({ pageName }) => {
 
   return (
     <section className="notes-group">
-      {/* <h2 className="notes-group-heading">Pinned</h2> */}
-      <section className="notes-container">
-        {/* <NoteCard />
+      {currentPageNotes.length === 0 && (
+        <h2>You don't have any notes for this section!</h2>
+      )}
+      {currentPageNotes && (
+        <section className="notes-container">
+          {/* <NoteCard />
         <NoteCard /> */}
-        {currentPageNotes.map((currentPageNote) => (
-          <NoteCard
-            key={currentPageNote._id}
-            note={currentPageNote}
-            pageName={pageName}
-          />
-        ))}
-      </section>
+          {currentPageNotes.map((currentPageNote) => (
+            <NoteCard
+              key={currentPageNote._id}
+              note={currentPageNote}
+              pageName={pageName}
+            />
+          ))}
+        </section>
+      )}
     </section>
   );
 };
