@@ -11,6 +11,7 @@ Head Breeze is your modern note taking app that helps you manage your daily task
 - Edit Note
 - Archive Note
 - Trash Note
+- Delete Note
 - Change Note Color
 - User Details Page
 - Frontend Authentication
