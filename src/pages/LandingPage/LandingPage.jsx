@@ -30,7 +30,10 @@ const LandingPage = () => {
               Join Now
             </Link>
             <Link to="/login" className="btn hero-btn-secondary landing-link">
-              Already have an account?
+              Already have an account? Login
+            </Link>
+            <Link to="/login" className="btn hero-btn-secondary landing-link">
+              Login as Guest
             </Link>
           </div>
 
