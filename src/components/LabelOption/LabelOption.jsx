@@ -1,4 +1,4 @@
-// import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../../contexts/auth-context";
 import { useNotes } from "../../contexts/notes-context";
 import { editNoteService } from "../../services/note-services";
@@ -9,14 +9,20 @@ const LabelOption = ({ note, label }) => {
   } = useAuth();
   const { notesDispatch } = useNotes();
 
-  // const isLabelPresentInNote = () =>
-  //   note.tags.find((tag) => tag.id === label.id) ? true : false;
+  const isLabelPresentInNote = note.tags.find((tag) => tag.id === label.id)
+    ? true
+    : false;
 
-  // const [isLabelInNote, setIsLabelInNote] = useState(isLabelPresentInNote());
+  const [labelOptionProps, setLabelOptionProps] = useState({
+    isOngoingCall: false,
+    isLabelChecked: isLabelPresentInNote,
+  });
+  const { isOngoingCall, isLabelChecked } = labelOptionProps;
 
   const toggleCheckboxHandler = async (label) => {
+    setLabelOptionProps((prev) => ({ ...prev, isOngoingCall: true }));
     const getNewNote = () => {
-      if (note.tags.find((tag) => tag.id === label.id)) {
+      if (isLabelPresentInNote) {
         return {
           ...note,
           tags: note.tags.filter((tag) => tag.id !== label.id),
@@ -36,16 +42,17 @@ const LabelOption = ({ note, label }) => {
           type: "TOGGLE_SELECT_LABEL",
           payload: { notes },
         });
+        setLabelOptionProps((prev) => ({
+          ...prev,
+          isOngoingCall: false,
+          isLabelChecked: !prev.isLabelChecked,
+        }));
       }
     } catch (error) {
       console.error(error);
       // replace this with proper error handling on the view
     }
   };
-
-  // useEffect(() => {
-  //   setIsLabelInNote(note.tags.fin((tag) => tag.id === label.id));
-  // }, [label.id, note.tags]);
 
   return (
     <label
@@ -56,7 +63,8 @@ const LabelOption = ({ note, label }) => {
         id="label-options-checkbox"
         className="label-options-checkbox"
         type="checkbox"
-        checked={note.tags.find((tag) => tag.id === label.id)}
+        checked={isLabelChecked}
+        disabled={isOngoingCall}
         onChange={() => toggleCheckboxHandler(label)}
       />
       {label.value}
