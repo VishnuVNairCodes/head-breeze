@@ -63,7 +63,7 @@ const NoteCard = ({ note, pageName }) => {
               >
                 <i className="bi bi-palette"></i>
               </button>
-              {/* <button
+              <button
                 className="btn note-card-btn"
                 onClick={() =>
                   setShowOptions((prev) => ({
@@ -73,7 +73,7 @@ const NoteCard = ({ note, pageName }) => {
                 }
               >
                 <i className="bi bi-tag"></i>
-              </button> */}
+              </button>
               <button
                 className="btn note-card-btn"
                 onClick={addToArchivesClickHandler}
