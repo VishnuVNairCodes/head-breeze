@@ -1,5 +1,5 @@
 ## Head Breeze
-Head Breeze is your modern note taking app that helps you manage your daily tasks and workflow in an efficient and modern way
+Head Breeze is a modern note taking app that helps you create and manage your notes efficiently with ease 
 
 ## Tech Stack
 - React JS 
